@@ -13,7 +13,12 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # groups for objects
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
     player_instance = player.Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    updatable.add(player_instance)
+    drawable.add(player_instance)
 
     # Game loop
     running = True
@@ -23,28 +28,14 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        # clear the screen (fill with black color)
+        # update objects
+        for obj in updatable:
+            obj.update(dt)
+
+        # draw objects
         screen.fill((0, 0, 0))
-
-        # update player
-        player_instance.update(dt)
-
-        # # draw player
-        # player_instance.draw(screen)
-
-        # # update asteroids
-        # # ...
-
-        # # draw asteroids
-        # for asteroid in asteroids:
-        #     asteroid.draw(screen)
-
-        # # update the display
-        # pygame.display.flip()
-        # dt = clock.tick(60) / 1000
-
-        # # draw asteroids
-        player_instance.draw(screen)
+        for obj in drawable:
+            obj.draw(screen)
         
         # update the display
         pygame.display.flip()
