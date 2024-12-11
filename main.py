@@ -9,6 +9,9 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Asteroids!")
 
+    clock = pygame.time.Clock()
+    dt = 0
+
     # Game loop
     running = True
     while running:
@@ -25,16 +28,10 @@ def main():
 
         # update the display
         pygame.display.flip()
+        dt = clock.tick(60) / 1000
 
     # quit pygame
     pygame.quit()
-
-    print("Asteroids game has ended.")
-    print("Goodbye!")
-
-    print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
 
 if __name__ == "__main__":
     main()
