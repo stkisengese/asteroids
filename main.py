@@ -26,6 +26,23 @@ def main():
         # clear the screen (fill with black color)
         screen.fill((0, 0, 0))
 
+        # update player
+        player_instance.update(dt)
+
+        # # draw player
+        # player_instance.draw(screen)
+
+        # # update asteroids
+        # # ...
+
+        # # draw asteroids
+        # for asteroid in asteroids:
+        #     asteroid.draw(screen)
+
+        # # update the display
+        # pygame.display.flip()
+        # dt = clock.tick(60) / 1000
+
         # # draw asteroids
         player_instance.draw(screen)
         
