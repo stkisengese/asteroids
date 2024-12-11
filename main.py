@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+import player
 
 def main():
     # initialize pygame
@@ -11,6 +12,8 @@ def main():
 
     clock = pygame.time.Clock()
     dt = 0
+
+    player_instance = player.Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # Game loop
     running = True
@@ -24,8 +27,8 @@ def main():
         screen.fill((0, 0, 0))
 
         # # draw asteroids
-        # pygame.draw.circle(screen, (255, 255, 255), (640, 360), 100)
-
+        player_instance.draw(screen)
+        
         # update the display
         pygame.display.flip()
         dt = clock.tick(60) / 1000
